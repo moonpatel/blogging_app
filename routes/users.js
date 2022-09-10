@@ -25,36 +25,24 @@ router.get('/login', (req, res) => {
     res.render('login')
 })
 
-router.get('/userstatus', (req, res) => {
-    if (req.session.userID)
-        res.send('LOGGED IN')
-    else
-        res.send('NOT LOGGED IN')
-})
-
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
     const user = await User.findOne({ username: username })
     const validPassword = await bcrypt.compare(password, user.hash)
     if (!validPassword) {
-        console.log('INCORRECT PASSWORD')
-        res.redirect('/login')
+        return res.redirect('/login')
     }
-    else {
-        req.session.userID = user._id
-        req.session.username = user.username
-        console.log(req.session)
-        console.log('CORRECT PASSWORD')
-        res.redirect(`/${username}`)
-    }
+    req.session.userID = user._id
+    req.session.username = user.username
+    res.redirect(`/${username}`)
 })
 
-router.get('/logout', isLoggedIn, (req, res) => {
-    delete req.session.userID
-    delete req.session.username
-    res.redirect('/userstatus')
+router.post('/logout', isLoggedIn, (req, res, next) => {
+    req.session.destroy()
+    res.redirect('/home')
 })
 
+// show user profile
 router.get('/:user', isLoggedIn, async (req, res) => {
     const user = await User.findOne({ username: req.params.user })
     res.render('user/show', { user })
@@ -65,9 +53,10 @@ router.get('/:user/blogs/new', isLoggedIn, async (req, res) => {
     res.render('blogs/new', { user })
 })
 
-router.get('/:user/blogs', isLoggedIn, async (req,res) => {
+router.get('/:user/blogs', isLoggedIn, async (req, res) => {
     const user = await User.findById(req.session.userID).populate('blogs')
-    res.render('blogs/index', user.blogs)
+    const blogs = user.blogs
+    res.render('blogs/index', { blogs, user })
 })
 
 router.post('/:user/blogs', isLoggedIn, async (req, res) => {

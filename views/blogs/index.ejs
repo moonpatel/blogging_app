@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs</title>
+    <title><%=user.username%> - Blogs</title>
 </head>
 <body>
-    
+    <h1><%=username%></h1>
+    <h1>Blogs created by <%=user.username%></h1>
+    <% for(let blog of blogs) {%> 
+        <div style="background-color: grey;">
+            <h3><%= blog.title %> </h3>
+            <p><%= blog.content %> </p>
+        </div>
+    <% } %>
 </body>
 </html>
