@@ -13,7 +13,12 @@ const userSchema = new Schema({
     hash: {
         type: String,
         required: true
-    }
+    },
+    blogs: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Blog',
+        required: true
+    }]
 })
 
 module.exports = mongoose.model('User', userSchema)

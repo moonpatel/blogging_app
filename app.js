@@ -36,11 +36,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 // ROUTES
-app.get('/', (req, res) => res.send('HOME PAGE'))
+app.get('/', (req, res) => res.render('home'))
 app.get('/favicon.ico', (req, res) => res.status(204))
 
-app.use('/', userRoutes)
-app.use('/blogs', blogRoutes)
+app.use('/', userRoutes)    // authentication
+app.use('/blogs', blogRoutes)   // blogs
 
 // page not found
 app.all('*', (req, res) => {

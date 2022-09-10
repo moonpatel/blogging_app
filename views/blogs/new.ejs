@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create new Blog</title>
+</head>
+
+<body>
+    <h1>Create new blog</h1>
+    <form action="/<%=user.username%>/blogs" method="post">
+        <input type="text" id="title" name="blog[title]" placeholder="title">
+        <textarea type="text" id="content" name="blog[content]" placeholder="content"></textarea>
+        <button>Create</button>
+    </form>
+</body>
+
+</html>
