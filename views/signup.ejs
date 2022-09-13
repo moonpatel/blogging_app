@@ -2,10 +2,10 @@
     <div class="container">
         <h1 class="text-center">Sign Up</h1>
         <div class="col-6 offset-3">
-            <form action="/signup" method="post">
-                <input class="mt-4 form-control" type="text" name="username" id="username" placeholder="Ex: nodemon">
-                <input class="mt-4 form-control" type="email" name="email" id="email" placeholder="Ex: helloworld@gmail.com">
-                <input class="mt-4 form-control" type="password" name="password" id="password" placeholder="Enter a strong password">
+            <form class="needs-validation" action="/signup" method="post" novalidate>
+                <input class="mt-4 form-control" type="text" name="username" id="username" placeholder="Ex: nodemon" required>
+                <input class="mt-4 form-control" type="email" name="email" id="email" placeholder="Ex: helloworld@gmail.com" required>
+                <input class="mt-4 form-control" type="password" name="password" id="password" placeholder="Enter a strong password" required>
                 <button class="mt-4 btn btn-success">Sign Up</button>
             </form>
         </div>

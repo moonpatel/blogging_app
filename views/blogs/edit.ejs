@@ -1,11 +1,14 @@
 <%- layout('./layouts/boilerplate') %>
-
-    <h1>Edit blog</h1>
-    <form action="/<%= username %>/blogs/<%= blog._id %>?_method=PUT" method="post">
-        <input class="form-control" type="text" id="title" name="blog[title]" placeholder="title" value="<%=blog.title%>">
-        <textarea class="form-control" type="text" id="content" name="blog[content]" placeholder="content"><%= blog.content %> </textarea>
-        <button class="btn btn-primary">Confirm changes</button>
-    </form>
-    <form action="/<%= username %>/blogs/<%= blog._id %>" method="get">
-        <button class="btn btn-secondary">Cancel</button>
-    </form>
+<div class="container">
+    <h1 class="mt-3 text-center">Edit blog</h1>
+    <div class="col-6 offset-3">
+        <form class="mt-3 needs-validation" action="/<%= username %>/blogs/<%= blog._id %>?_method=PUT" method="post" novalidate>
+            <input class="mt-3 form-control" type="text" id="title" name="blog[title]" placeholder="title" value="<%=blog.title%>" required>
+            <textarea class="mt-3 form-control" type="text" id="content" name="blog[content]" placeholder="content" required><%= blog.content %> </textarea>
+            <button class="mt-3 btn btn-primary">Confirm changes</button>
+        </form>
+        <form class="mt-3" action="/<%= username %>/blogs/<%= blog._id %>" method="get">
+            <button class="btn btn-secondary">Cancel</button>
+        </form>
+    </div>
+</div>

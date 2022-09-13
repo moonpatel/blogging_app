@@ -12,11 +12,11 @@
                                 <%= blog.title %>
                             </h5>
                             <p class="card-text">
-                                <%= blog.content %>
+                                <%= blog.content.substr(0,150)+'.....' %>
                             </p>
                             <% if(username) {%> 
                             <a href="/<% username %> /blogs/<%= blog._id %>" class="btn btn-primary">View Blog</a>
-                            <% } else {%> 
+                            <% } else {%>
                             <a href="/blogs/<%= blog._id %>" class="btn btn-primary">View Blog</a>
                             <% } %> 
                         </div>
