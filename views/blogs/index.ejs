@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=user.username%> - Blogs</title>
-</head>
-<body>
-    <h1><%=username%></h1>
-    <h1>Blogs created by <%=user.username%></h1>
-    <% for(let blog of blogs) {%> 
-        <div style="background-color: grey;">
-            <h3><%= blog.title %> </h3>
-            <p><%= blog.content %> </p>
+<%- layout('./layouts/boilerplate') %>
+    <div class="container">
+        <h1 class="text-center mt-3 mb-3">All Blogs</h1>
+        <div class="container">
+            <div class="row">
+                <% for(let blog of blogs) {%>
+                    <div class="card col-4" style="box-sizing: border-box;">
+                        <img src="https://images.wallpaperscraft.com/image/single/chip_circuit_processor_140251_300x168.jpg"
+                            class="card-img-top" alt="thumbnail">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= blog.title %>
+                            </h5>
+                            <p class="card-text">
+                                <%= blog.content %>
+                            </p>
+                            <% if(username) {%> 
+                            <a href="/<% username %> /blogs/<%= blog._id %>" class="btn btn-primary">View Blog</a>
+                            <% } else {%> 
+                            <a href="/blogs/<%= blog._id %>" class="btn btn-primary">View Blog</a>
+                            <% } %> 
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
         </div>
-    <% } %>
-</body>
-</html>
+    </div>

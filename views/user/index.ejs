@@ -1,0 +1,24 @@
+<%- layout('./layouts/boilerplate') %>
+        <div class="container">
+            <h1 class="text-center mt-3 mb-3">Blogs created by <%=user.username%>
+            </h1>
+            <div class="container">
+                <div class="row">
+                    <% for(let blog of blogs) {%>
+                        <div class="card col-4" style="box-sizing: border-box;">
+                            <img src="https://images.wallpaperscraft.com/image/single/chip_circuit_processor_140251_300x168.jpg"
+                                class="card-img-top" alt="thumbnail">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= blog.title %>
+                                </h5>
+                                <p class="card-text">
+                                        <%= blog.content.substr(0,50) %>
+                                </p>
+                                <a href="/<%= username %>/blogs/<%= blog._id %> " class="btn btn-primary">View Blog</a>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>

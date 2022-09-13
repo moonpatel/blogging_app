@@ -1,0 +1,42 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Blogger</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/blogs">Explore</a>
+        </li>
+        <% if(username) {%> 
+        <li class="nav-item">
+          <a class="nav-link active" href="/<%=username%>/blogs/new">Create</a>
+        </li>
+        <% } %> 
+      </ul>
+      <div class="ml-auto">
+        <ul class="navbar-nav">
+          <% if(username) {%>
+            <li class="nav-item">
+              <form action="/logout" method="post">
+                <button class="btn btn-danger">Log Out</button>
+              </form>
+            </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="btn btn-success me-0 nav-link active" role="button" href="/signup">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a href="/login" class="ml-3 btn btn-primary nav-link active" role="button">Log in</a>
+              </li>
+              <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=user.username%></title>
-</head>
-<body>
-    <h1><%=user.username%></h1>
-    <h2><%=user.email%></h2>
-    <a href="/<%=user.username%>/blogs/new">Create a blog</a>
-    <a href="/<%=user.username%>/blogs">Show blogs</a>
-    <br>
-    <form action="/logout" method="post">
-        <button>Log out</button>
-    </form>
-</body>
-</html>
+<%- layout('./layouts/boilerplate') %>
+    <div class="container">
+        <img class="row mt-5 m-auto justify-content-center rounded-circle" style="background-color: rgb(213, 213, 213); display: block;" src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png" alt="">
+        <h1 class="text-center">
+            <%=user.username%>
+        </h1>
+        <h5 class="mt-0 text-center text-muted">
+            <%=user.email%>
+        </h5>
+        <div class="mb-3 row justify-content-center">
+            <a class="m-2 btn btn-primary" href="/<%=user.username%>/blogs/new">Create a blog</a>
+            <a class="m-2 btn btn-primary" href="/<%=user.username%>/blogs">Show blogs</a>
+        </div>
+        <br>
+    </div>
